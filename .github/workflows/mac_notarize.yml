@@ -1,0 +1,53 @@
+name: macOS ARM64 Notarized Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-notarize:
+    name: Build, Sign & Notarize
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          brew install cmake ninja eigen ceres-solver qt@6
+
+      - name: Import Developer ID certificate
+        env:
+          CERTIFICATE_BASE64: ${{ secrets.DEVELOPER_ID_CERT }}
+          CERTIFICATE_PASSWORD: ${{ secrets.CERTIFICATE_PASSWORD }}
+        run: |
+          CERT_DIR="$RUNNER_TEMP/certs"
+          mkdir -p "$CERT_DIR"
+          echo "$CERTIFICATE_BASE64" | base64 --decode > "$CERT_DIR/cert.p12"
+          KEYCHAIN_PASSWORD=$(openssl rand -base64 32)
+          security create-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" build.keychain
+          security import "$CERT_DIR/cert.p12" -k build.keychain -P "$CERTIFICATE_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN_PASSWORD" build.keychain
+          security find-identity -v -p codesigning build.keychain
+
+      - name: Build
+        run: |
+          chmod +x build_mac.sh sign_mac.sh notarize_mac.sh package_mac.sh
+          ./build_mac.sh
+
+      - name: Package, Sign & Notarize
+        env:
+          DEVELOPER_ID_CERT: ${{ secrets.CODESIGN_IDENTITY }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          APP_SPECIFIC_PASSWORD: ${{ secrets.APP_SPECIFIC_PASSWORD }}
+        run: |
+          ./package_mac.sh install/CurveFitScientificApp.app --sign --notarize
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: CurveFitScientificApp-macOS-ARM64-notarized
+          path: dist/notarized/
