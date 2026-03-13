@@ -9,7 +9,7 @@
 #  include <dlfcn.h>
 #endif
 
-namespace curvefit {
+namespace SargisLab {
 
 struct PluginHandle {
 #ifdef _WIN32
@@ -137,4 +137,4 @@ void PluginLoader::clear() {
     impl_->plugins.clear();
 }
 
-} // namespace curvefit
+} // namespace SargisLab

@@ -6,7 +6,7 @@
 #include <random>
 #include <vector>
 
-namespace curvefit {
+namespace SargisLab {
 
 enum class DistributionType {
     Normal,
@@ -49,4 +49,4 @@ private:
     std::mt19937 rng_;
 };
 
-} // namespace curvefit
+} // namespace SargisLab

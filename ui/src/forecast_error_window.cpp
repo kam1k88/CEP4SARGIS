@@ -3,7 +3,7 @@
 #include <QLabel>
 #include <QFormLayout>
 
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
 #include "qcustomplot.h"
 #else
 #include <QtCharts/QChartView>
@@ -17,7 +17,7 @@ struct ForecastErrorWindow::Impl {
     QLabel* maeLabel = nullptr;
     QLabel* mapeLabel = nullptr;
     QLabel* ciLabel = nullptr;
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     QCustomPlot* plot = nullptr;
 #else
     QtCharts::QChartView* chartView = nullptr;
@@ -41,7 +41,7 @@ ForecastErrorWindow::ForecastErrorWindow(QWidget* parent) : QDialog(parent), imp
     form->addRow("CI (95%):", impl_->ciLabel);
     layout->addLayout(form);
 
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     impl_->plot = new QCustomPlot(this);
     layout->addWidget(impl_->plot);
 #else
@@ -51,7 +51,7 @@ ForecastErrorWindow::ForecastErrorWindow(QWidget* parent) : QDialog(parent), imp
 #endif
 }
 
-void ForecastErrorWindow::setResult(const curvefit::ForecastErrorResult& result) {
+void ForecastErrorWindow::setResult(const SargisLab::ForecastErrorResult& result) {
     impl_->rmseLabel->setText(QString::number(result.rmse));
     impl_->maeLabel->setText(QString::number(result.mae));
     impl_->mapeLabel->setText(QString::number(result.mape));
@@ -63,7 +63,7 @@ void ForecastErrorWindow::setForecastPlot(const std::vector<double>& x, const st
                                          const std::vector<double>& ciUpper) {
     (void)ciLower;
     (void)ciUpper;
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     if (!impl_->plot) return;
     impl_->plot->clearGraphs();
     impl_->plot->addGraph();

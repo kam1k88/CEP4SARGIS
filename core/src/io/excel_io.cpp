@@ -1,10 +1,10 @@
 #include "core/io/excel_io.hpp"
 
-#if defined(CURVEFIT_EXCEL_AVAILABLE) && CURVEFIT_EXCEL_AVAILABLE
+#if defined(SargisLab_EXCEL_AVAILABLE) && SargisLab_EXCEL_AVAILABLE
 
 #include <OpenXLSX.hpp>
 
-namespace curvefit {
+namespace SargisLab {
 namespace io {
 
 std::optional<Dataset> loadExcel(const QString& path) {
@@ -59,6 +59,6 @@ bool saveExcel(const Dataset& data, const QString& path) {
 }
 
 } // namespace io
-} // namespace curvefit
+} // namespace SargisLab
 
 #endif

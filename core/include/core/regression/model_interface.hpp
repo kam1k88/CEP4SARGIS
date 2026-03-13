@@ -9,7 +9,7 @@ namespace ceres {
     class CostFunction;
 }
 
-namespace curvefit {
+namespace SargisLab {
 
 /// Unified interface for regression models (built-in and plugins)
 struct IRegressionModel {
@@ -29,4 +29,4 @@ struct IRegressionModel {
     virtual ceres::CostFunction* createCostFunction(double x, double y) const = 0;
 };
 
-} // namespace curvefit
+} // namespace SargisLab

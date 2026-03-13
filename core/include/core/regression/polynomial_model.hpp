@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-namespace curvefit {
+namespace SargisLab {
 
 /// Polynomial model: f(x) = sum_{i=0}^{n} a_i * x^i
 /// Degree is fixed at construction (default 2 = quadratic)
@@ -24,4 +24,4 @@ private:
     int degree_;
 };
 
-} // namespace curvefit
+} // namespace SargisLab

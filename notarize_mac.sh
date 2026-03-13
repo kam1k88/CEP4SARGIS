@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Notarize DMG for macOS distribution
-# Usage: ./notarize_mac.sh /path/to/CurveFitScientificApp.dmg
+# Usage: ./notarize_mac.sh /path/to/SargisLabScientificApp.dmg
 #
 # Required env vars (or GitHub Secrets):
 #   APPLE_ID       - Apple ID email
@@ -10,7 +10,7 @@ set -e
 
 if [ $# -lt 1 ]; then
     echo "Usage: $0 <path-to-.dmg>"
-    echo "Example: $0 dist/CurveFitScientificApp.dmg"
+    echo "Example: $0 dist/SargisLabScientificApp.dmg"
     exit 1
 fi
 

@@ -2,7 +2,7 @@
 #include <ceres/ceres.h>
 #include <cmath>
 
-namespace curvefit {
+namespace SargisLab {
 
 std::string ExponentialModel::name() const {
     return "Exponential (a*exp(b*x)+c)";
@@ -65,4 +65,4 @@ ceres::CostFunction* ExponentialModel::createCostFunction(double x, double y) co
     return new ExponentialCostFunction(x, y);
 }
 
-} // namespace curvefit
+} // namespace SargisLab

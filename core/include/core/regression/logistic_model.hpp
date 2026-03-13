@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-namespace curvefit {
+namespace SargisLab {
 
 /// Logistic model: f(x) = L / (1 + exp(-k*(x-x0)))
 /// Parameters: L (carrying capacity), k (rate), x0 (midpoint)
@@ -19,4 +19,4 @@ public:
     ceres::CostFunction* createCostFunction(double x, double y) const override;
 };
 
-} // namespace curvefit
+} // namespace SargisLab

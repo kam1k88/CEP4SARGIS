@@ -11,7 +11,7 @@ public:
     explicit PlotView(QWidget* parent = nullptr);
     ~PlotView() override;
 
-    void setData(const curvefit::Dataset& data);
+    void setData(const SargisLab::Dataset& data);
     void setFitCurve(const std::vector<double>& x, const std::vector<double>& y);
     void setResiduals(const std::vector<double>& x, const std::vector<double>& residuals);
     void clearFit();

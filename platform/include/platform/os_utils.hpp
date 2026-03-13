@@ -2,7 +2,7 @@
 
 #include <QString>
 
-namespace curvefit {
+namespace SargisLab {
 namespace platform {
 
 /// Get directory containing the executable
@@ -15,4 +15,4 @@ QString getPluginsDirectory();
 QString getAppDataDirectory();
 
 } // namespace platform
-} // namespace curvefit
+} // namespace SargisLab

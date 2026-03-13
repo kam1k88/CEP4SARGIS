@@ -1,4 +1,4 @@
-# CurveFit — Build Instructions
+# SargisLab — Build Instructions
 
 Кроссплатформенное научное приложение для регрессии и аппроксимации кривых.
 
@@ -25,7 +25,7 @@ cd vcpkg
 ### Сборка
 
 ```powershell
-cd CEP4SARGIS
+cd SargisLab
 mkdir build
 cd build
 
@@ -37,7 +37,7 @@ cmake -G "Visual Studio 17 2022" -A x64 `
 cmake --build . --config Release
 ```
 
-Исполняемый файл: `build\Release\CurveFit.exe`
+Исполняемый файл: `build\Release\SargisLab.exe`
 
 ### Без vcpkg (ручная установка Qt и Ceres)
 
@@ -60,7 +60,7 @@ brew install qt@6 eigen ceres-solver
 ### Сборка
 
 ```bash
-cd CEP4SARGIS
+cd SargisLab
 mkdir build
 cd build
 
@@ -83,7 +83,7 @@ cmake -G Ninja \
   ..
 ```
 
-Бандл приложения: `build/CurveFitScientificApp.app`
+Бандл приложения: `build/SargisLabScientificApp.app`
 
 ### Сборка и упаковка (скрипты)
 
@@ -92,18 +92,18 @@ cmake -G Ninja \
 ./build_mac.sh
 
 # Создание DMG (после build_mac.sh)
-./package_mac.sh install/CurveFitScientificApp.app
+./package_mac.sh install/SargisLabScientificApp.app
 ```
 
 После `build_mac.sh`:
-- `.app`: `install/CurveFitScientificApp.app`
-- DMG: `dist/CurveFitScientificApp.dmg` (после `package_mac.sh`)
+- `.app`: `install/SargisLabScientificApp.app`
+- DMG: `dist/SargisLabScientificApp.dmg` (после `package_mac.sh`)
 
 ### Install target
 
 ```bash
 cmake --build build --target install
-# Результат: ${CMAKE_INSTALL_PREFIX}/CurveFitScientificApp.app
+# Результат: ${CMAKE_INSTALL_PREFIX}/SargisLabScientificApp.app
 ```
 
 ### Иконка приложения
@@ -116,9 +116,9 @@ cmake --build build --target install
 1. Собирает Windows x64 (vcpkg + MSVC)
 2. Собирает macOS ARM64 (подпись и notarization)
 3. Создаёт GitHub Release с артефактами:
-   - `CurveFitScientificApp-win64.zip`
-   - `CurveFitScientificApp.dmg`
-   - `CurveFitScientificApp.app.zip`
+   - `SargisLabScientificApp-win64.zip`
+   - `SargisLabScientificApp.dmg`
+   - `SargisLabScientificApp.app.zip`
 
 ```bash
 git tag v1.0.0
@@ -131,7 +131,7 @@ git push origin v1.0.0
 - **Runner**: `windows-latest`
 - **Зависимости**: vcpkg (ceres, eigen3, qt6-base, qt6-charts, qt6-tools)
 - **Сборка**: CMake + Visual Studio 2022, Release
-- **Упаковка**: windeployqt, папка `CurveFitScientificApp-win64/`, zip
+- **Упаковка**: windeployqt, папка `SargisLabScientificApp-win64/`, zip
 
 ### macOS Release Workflow
 
@@ -149,8 +149,8 @@ git push origin v1.0.0
 
 | Опция | По умолчанию | Описание |
 |-------|--------------|----------|
-| `CURVEFIT_USE_QCUSTOMPLOT` | ON | Использовать QCustomPlot для графиков |
-| `CURVEFIT_BUILD_PLUGINS` | ON | Собирать пример плагина |
+| `SargisLab_USE_QCUSTOMPLOT` | ON | Использовать QCustomPlot для графиков |
+| `SargisLab_BUILD_PLUGINS` | ON | Собирать пример плагина |
 
 ## QCustomPlot (опционально)
 
@@ -173,7 +173,7 @@ git push origin v1.0.0
 ## Структура проекта
 
 ```
-CEP4SARGIS/
+SargisLab/
 ├── core/          # Модели, регрессия, анализ, IO, плагины
 ├── ui/            # Qt GUI
 ├── platform/      # OS-утилиты (Windows, macOS)
@@ -184,5 +184,5 @@ CEP4SARGIS/
 
 ## Отладка
 
-- **Windows**: Visual Studio — откройте `build/CurveFit.sln`, выберите конфигурацию Debug.
+- **Windows**: Visual Studio — откройте `build/SargisLab.sln`, выберите конфигурацию Debug.
 - **macOS**: Xcode — сгенерируйте проект через CMake с `-G Xcode` или используйте `lldb` с Ninja-build.

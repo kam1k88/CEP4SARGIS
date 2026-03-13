@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleName</key>
-    <string>CurveFitScientificApp</string>
+    <string>CSargisLabScientificApp</string>
     <key>CFBundleDisplayName</key>
-    <string>CurveFit Scientific</string>
+    <string>SargisLab Scientific</string>
     <key>CFBundleIdentifier</key>
-    <string>com.curvefit.scientific</string>
+    <string>com.sargislab.scientific</string>
     <key>CFBundleVersion</key>
     <string>1.0.0</string>
     <key>CFBundleShortVersionString</key>

@@ -4,7 +4,7 @@
 #include <QString>
 #include <optional>
 
-namespace curvefit {
+namespace SargisLab {
 
 namespace io {
 
@@ -16,4 +16,4 @@ bool saveCsv(const Dataset& data, const QString& path, QChar delimiter = ',');
 
 } // namespace io
 
-} // namespace curvefit
+} // namespace SargisLab

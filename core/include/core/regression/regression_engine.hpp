@@ -5,7 +5,7 @@
 #include <memory>
 #include <vector>
 
-namespace curvefit {
+namespace SargisLab {
 
 class RegressionEngine {
 public:
@@ -30,4 +30,4 @@ private:
     std::unique_ptr<Impl> impl_;
 };
 
-} // namespace curvefit
+} // namespace SargisLab

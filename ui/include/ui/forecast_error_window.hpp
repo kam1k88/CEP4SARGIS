@@ -8,7 +8,7 @@ class ForecastErrorWindow : public QDialog {
 public:
     explicit ForecastErrorWindow(QWidget* parent = nullptr);
 
-    void setResult(const curvefit::ForecastErrorResult& result);
+    void setResult(const SargisLab::ForecastErrorResult& result);
     void setForecastPlot(const std::vector<double>& x, const std::vector<double>& y,
                         const std::vector<double>& ciLower,
                         const std::vector<double>& ciUpper);

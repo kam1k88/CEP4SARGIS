@@ -4,7 +4,7 @@
 #include <string>
 #include <cstddef>
 
-namespace curvefit {
+namespace SargisLab {
 
 /// Single data point (x, y)
 struct DataPoint {
@@ -91,4 +91,4 @@ struct MonteCarloResult {
     double percentile_97_5{0};
 };
 
-} // namespace curvefit
+} // namespace SargisLab

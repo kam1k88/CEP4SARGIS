@@ -5,7 +5,7 @@
 #include <windows.h>
 #include <vector>
 
-namespace curvefit {
+namespace SargisLab {
 namespace platform {
 
 QString getExecutableDirectory() {
@@ -42,4 +42,4 @@ QString getAppDataDirectory() {
 }
 
 } // namespace platform
-} // namespace curvefit
+} // namespace SargisLab

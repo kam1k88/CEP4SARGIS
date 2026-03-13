@@ -1,6 +1,6 @@
-!define APP_NAME "CurveFit Scientific App"
+!define APP_NAME "SargisLab Scientific App"
 !define APP_VERSION "${VERSION}"
-!define APP_EXE "CurveFitScientificApp.exe"
+!define APP_EXE "SargisLabScientificApp.exe"
 !define INSTALL_DIR "$PROGRAMFILES64\${APP_NAME}"
 
 !include "MUI2.nsh"
@@ -20,7 +20,7 @@
 
 Section "Install"
     SetOutPath "${INSTALL_DIR}"
-    File /r "CurveFitScientificApp-${APP_VERSION}-win64\*.*"
+    File /r "SargisLabScientificApp-${APP_VERSION}-win64\*.*"
 
     CreateShortcut "$DESKTOP\${APP_NAME}.lnk" "${INSTALL_DIR}\${APP_EXE}"
     CreateShortcut "$SMPROGRAMS\${APP_NAME}.lnk" "${INSTALL_DIR}\${APP_EXE}"

@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-namespace curvefit {
+namespace SargisLab {
 
 /// Gaussian CDF model: f(x) = 0.5 * (1 + erf((x - mu) / (sigma * sqrt(2))))
 /// Parameters: mu, sigma (sigma > 0)
@@ -19,4 +19,4 @@ public:
     ceres::CostFunction* createCostFunction(double x, double y) const override;
 };
 
-} // namespace curvefit
+} // namespace SargisLab

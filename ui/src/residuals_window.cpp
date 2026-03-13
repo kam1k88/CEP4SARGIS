@@ -4,7 +4,7 @@
 #include <QGroupBox>
 #include <QFormLayout>
 
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
 #include "qcustomplot.h"
 #else
 #include <QtCharts/QChartView>
@@ -16,7 +16,7 @@
 
 struct ResidualsWindow::Impl {
     QLabel* statsLabel = nullptr;
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     QCustomPlot* plot = nullptr;
 #else
     QtCharts::QChartView* chartView = nullptr;
@@ -33,7 +33,7 @@ ResidualsWindow::ResidualsWindow(QWidget* parent) : QDialog(parent), impl_(std::
     impl_->statsLabel->setText("Mean: -\nVariance: -\nSkewness: -\nKurtosis: -");
     layout->addWidget(impl_->statsLabel);
 
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     impl_->plot = new QCustomPlot(this);
     layout->addWidget(impl_->plot);
 #else
@@ -44,7 +44,7 @@ ResidualsWindow::ResidualsWindow(QWidget* parent) : QDialog(parent), impl_(std::
 }
 
 void ResidualsWindow::setData(const std::vector<double>& x, const std::vector<double>& residuals) {
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     if (!impl_->plot) return;
     impl_->plot->clearGraphs();
     impl_->plot->addGraph();

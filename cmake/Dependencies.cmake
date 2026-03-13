@@ -1,11 +1,11 @@
-# CurveFit Dependencies
+# SargisLab Dependencies
 # Supports: vcpkg, system packages, FetchContent fallback
 
 # Qt6 (required)
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
 find_package(Qt6 QUIET COMPONENTS Charts)
 if(Qt6Charts_FOUND)
-    set(CURVEFIT_QT_CHARTS_AVAILABLE 1)
+    set(SargisLab_QT_CHARTS_AVAILABLE 1)
 endif()
 
 # Eigen3
@@ -30,7 +30,7 @@ if(NOT Ceres_FOUND)
 endif()
 
 # OpenXLSX for Excel support (optional)
-set(CURVEFIT_EXCEL_AVAILABLE 0)
+set(SargisLab_EXCEL_AVAILABLE 0)
 find_path(OpenXLSX_INCLUDE_DIR NAMES OpenXLSX.hpp PATHS
     ${CMAKE_SOURCE_DIR}/external/OpenXLSX
     /usr/include
@@ -39,15 +39,15 @@ find_path(OpenXLSX_INCLUDE_DIR NAMES OpenXLSX.hpp PATHS
 if(OpenXLSX_INCLUDE_DIR)
     add_library(OpenXLSX INTERFACE)
     target_include_directories(OpenXLSX INTERFACE ${OpenXLSX_INCLUDE_DIR})
-    set(CURVEFIT_EXCEL_AVAILABLE 1)
+    set(SargisLab_EXCEL_AVAILABLE 1)
 endif()
 
 # QCustomPlot (optional) - use Qt Charts if QCustomPlot not available
-set(CURVEFIT_QCUSTOMPLOT_AVAILABLE 0)
-if(CURVEFIT_USE_QCUSTOMPLOT AND EXISTS "${CMAKE_SOURCE_DIR}/external/qcustomplot/qcustomplot.cpp")
+set(SargisLab_QCUSTOMPLOT_AVAILABLE 0)
+if(SargisLab_USE_QCUSTOMPLOT AND EXISTS "${CMAKE_SOURCE_DIR}/external/qcustomplot/qcustomplot.cpp")
     file(READ "${CMAKE_SOURCE_DIR}/external/qcustomplot/qcustomplot.cpp" _qcp_content)
     if(NOT _qcp_content MATCHES "Placeholder")
-        set(CURVEFIT_QCUSTOMPLOT_AVAILABLE 1)
+        set(SargisLab_QCUSTOMPLOT_AVAILABLE 1)
         set(QCUSTOMPLOT_DIR "${CMAKE_SOURCE_DIR}/external/qcustomplot")
     endif()
 endif()

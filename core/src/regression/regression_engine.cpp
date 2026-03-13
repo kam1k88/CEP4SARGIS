@@ -9,7 +9,7 @@
 #include <algorithm>
 #include <stdexcept>
 
-namespace curvefit {
+namespace SargisLab {
 
 struct RegressionEngine::Impl {
     std::vector<IRegressionModel*> externalModels;
@@ -113,4 +113,4 @@ FitResult RegressionEngine::fit(const Dataset& data, IRegressionModel* model,
     return result;
 }
 
-} // namespace curvefit
+} // namespace SargisLab

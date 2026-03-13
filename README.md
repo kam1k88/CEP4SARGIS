@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# CurveFit
+# SargisLab
 
 Научное приложение для анализа данных и аппроксимации кривых (аналог CurveExpert Professional).
 
@@ -37,7 +36,3 @@ cmake --build build
 - `platform/` — OS-специфичные утилиты
 - `app/` — точки входа (Windows, macOS)
 - `plugins/` — пример плагина Gaussian CDF
-=======
-# CEP4SARGIS
-CurveFit  Научное приложение для анализа данных и аппроксимации кривых (аналог CurveExpert Professional)
->>>>>>> 174ccfa28a9b015376927d42c9b76fe63862d441

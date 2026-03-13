@@ -3,7 +3,7 @@
 #include <numeric>
 #include <algorithm>
 
-namespace curvefit {
+namespace SargisLab {
 
 ForecastErrorResult ForecastError::evaluate(const Dataset& data, IRegressionModel* model,
                                             const std::vector<double>& params,
@@ -69,4 +69,4 @@ double ForecastError::probErrorExceeds(double horizon, const std::vector<double>
     return 2.0 * (1.0 - 0.5 * (1.0 + std::erf(z / 1.414213562373095)));
 }
 
-} // namespace curvefit
+} // namespace SargisLab

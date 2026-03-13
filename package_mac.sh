@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Package CurveFit .app into DMG for macOS
+# Package SargisLab .app into DMG for macOS
 # Usage: ./package_mac.sh <path-to-.app> [--sign] [--notarize]
 #
 # --sign      Sign .app before creating DMG (requires DEVELOPER_ID_CERT)
@@ -21,14 +21,14 @@ done
 
 if [ -z "${APP_PATH}" ] || [ ! -d "${APP_PATH}" ]; then
     echo "Usage: $0 <path-to-.app> [--sign] [--notarize]"
-    echo "Example: $0 install/CurveFitScientificApp.app"
-    echo "         $0 install/CurveFitScientificApp.app --sign --notarize"
+    echo "Example: $0 install/SargisLabScientificApp.app"
+    echo "         $0 install/SargisLabScientificApp.app --sign --notarize"
     exit 1
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 APP_PATH="$(cd "$(dirname "${APP_PATH}")" && pwd)/$(basename "${APP_PATH}")"
-DMG_NAME="CurveFitScientificApp"
+DMG_NAME="SargisLabScientificApp"
 QT_PREFIX="$(brew --prefix qt@6 2>/dev/null || echo /opt/homebrew/opt/qt@6)"
 MACDEPLOYQT="${QT_PREFIX}/bin/macdeployqt"
 

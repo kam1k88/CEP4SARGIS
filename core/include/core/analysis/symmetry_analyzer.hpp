@@ -3,7 +3,7 @@
 #include "core/types.hpp"
 #include <vector>
 
-namespace curvefit {
+namespace SargisLab {
 
 class SymmetryAnalyzer {
 public:
@@ -18,4 +18,4 @@ public:
     SymmetryResult analyze(const std::vector<double>& residuals, int numBins = 20);
 };
 
-} // namespace curvefit
+} // namespace SargisLab

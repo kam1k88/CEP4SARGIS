@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Sign CurveFit .app for macOS distribution
-# Usage: ./sign_mac.sh /path/to/CurveFitScientificApp.app
+# Sign SargisLab .app for macOS distribution
+# Usage: ./sign_mac.sh /path/to/SargisLab.app
 #
 # Required: DEVELOPER_ID_CERT - "Developer ID Application: Your Name (TEAM_ID)"
 # Or pass as second argument: ./sign_mac.sh app.app "Developer ID Application: ..."
@@ -8,7 +8,7 @@ set -e
 
 if [ $# -lt 1 ]; then
     echo "Usage: $0 <path-to-.app> [identity]"
-    echo "Example: $0 install/CurveFitScientificApp.app"
+    echo "Example: $0 install/SargisLab.app"
     echo "Identity from DEVELOPER_ID_CERT or 2nd argument"
     exit 1
 fi

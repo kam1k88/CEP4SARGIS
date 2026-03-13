@@ -2,7 +2,7 @@
 #include <ceres/ceres.h>
 #include <sstream>
 
-namespace curvefit {
+namespace SargisLab {
 
 PolynomialModel::PolynomialModel(int degree) : degree_(std::max(1, degree)) {}
 
@@ -75,4 +75,4 @@ ceres::CostFunction* PolynomialModel::createCostFunction(double x, double y) con
     return new PolynomialCostFunction(this, x, y);
 }
 
-} // namespace curvefit
+} // namespace SargisLab

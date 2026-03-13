@@ -4,11 +4,11 @@
 #include <QString>
 #include <optional>
 
-namespace curvefit {
+namespace SargisLab {
 
 namespace io {
 
-#if defined(CURVEFIT_EXCEL_AVAILABLE) && CURVEFIT_EXCEL_AVAILABLE
+#if defined(SargisLab_EXCEL_AVAILABLE) && SargisLab_EXCEL_AVAILABLE
 
 /// Load dataset from Excel .xlsx (first sheet, columns A and B)
 std::optional<Dataset> loadExcel(const QString& path);
@@ -25,4 +25,4 @@ inline bool saveExcel(const Dataset&, const QString&) { return false; }
 
 } // namespace io
 
-} // namespace curvefit
+} // namespace SargisLab

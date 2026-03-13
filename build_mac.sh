@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build CurveFit for macOS ARM64 (M1-M3)
+# Build SargisLab for macOS ARM64 (M1-M3)
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -27,5 +27,5 @@ echo "=== Installing ==="
 cmake --install .
 
 echo "=== Done ==="
-echo "App bundle: ${INSTALL_DIR}/CurveFitScientificApp.app"
-echo "To create DMG: ./package_mac.sh ${INSTALL_DIR}/CurveFitScientificApp.app"
+echo "App bundle: ${INSTALL_DIR}/SargisLabScientificApp.app"
+echo "To create DMG: ./package_mac.sh ${INSTALL_DIR}/SargisLabScientificApp.app"

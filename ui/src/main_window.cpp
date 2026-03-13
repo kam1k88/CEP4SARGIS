@@ -35,7 +35,7 @@ struct MainWindowPrivate {
     DataManager* dataManager = nullptr;
     QFormLayout* paramFormLayout = nullptr;
     std::vector<double> lastFitParams;
-    curvefit::IRegressionModel* lastFitModel = nullptr;
+    SargisLab::IRegressionModel* lastFitModel = nullptr;
     ResidualsWindow* residualsWindow = nullptr;
     SymmetryWindow* symmetryWindow = nullptr;
     ForecastErrorWindow* forecastErrorWindow = nullptr;
@@ -44,13 +44,13 @@ struct MainWindowPrivate {
     QPlainTextEdit* resultsEdit = nullptr;
     QList<QDoubleSpinBox*> paramSpins;
 
-    curvefit::RegressionEngine engine;
-    curvefit::PluginLoader pluginLoader;
-    curvefit::ResidualsAnalyzer residualsAnalyzer;
-    curvefit::SymmetryAnalyzer symmetryAnalyzer;
-    curvefit::ForecastError forecastError;
+    SargisLab::RegressionEngine engine;
+    SargisLab::PluginLoader pluginLoader;
+    SargisLab::ResidualsAnalyzer residualsAnalyzer;
+    SargisLab::SymmetryAnalyzer symmetryAnalyzer;
+    SargisLab::ForecastError forecastError;
 
-    curvefit::IRegressionModel* currentModel() {
+    SargisLab::IRegressionModel* currentModel() {
         const int idx = modelCombo ? modelCombo->currentIndex() : -1;
         auto models = engine.models();
         if (idx >= 0 && idx < static_cast<int>(models.size())) {
@@ -88,7 +88,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), d(new MainWindowP
 MainWindow::~MainWindow() = default;
 
 void MainWindow::setupUi() {
-    setWindowTitle("CurveFit - Regression Analysis");
+    setWindowTitle("SargisLab - Regression Analysis");
     resize(1200, 800);
 
     auto* central = new QWidget(this);
@@ -160,7 +160,7 @@ void MainWindow::setupDockWidgets() {
 }
 
 void MainWindow::loadPlugins() {
-    QString pluginsDir = curvefit::platform::getPluginsDirectory();
+    QString pluginsDir = SargisLab::platform::getPluginsDirectory();
     d->pluginLoader.loadFromDirectory(pluginsDir);
     for (auto* model : d->pluginLoader.loadedModels()) {
         d->engine.addModel(model);
@@ -172,7 +172,7 @@ void MainWindow::onImportCsv() {
     QString path = QFileDialog::getOpenFileName(this, "Import CSV", QString(),
                                                 "CSV (*.csv);;All (*)");
     if (path.isEmpty()) return;
-    auto data = curvefit::io::loadCsv(path);
+    auto data = SargisLab::io::loadCsv(path);
     if (data) {
         d->dataManager->setDataset(*data);
         d->plotView->setData(*data);
@@ -185,7 +185,7 @@ void MainWindow::onImportJson() {
     QString path = QFileDialog::getOpenFileName(this, "Import JSON", QString(),
                                                 "JSON (*.json);;All (*)");
     if (path.isEmpty()) return;
-    auto data = curvefit::io::loadJson(path);
+    auto data = SargisLab::io::loadJson(path);
     if (data) {
         d->dataManager->setDataset(*data);
         d->plotView->setData(*data);
@@ -198,7 +198,7 @@ void MainWindow::onExportCsv() {
     QString path = QFileDialog::getSaveFileName(this, "Export CSV", QString(),
                                                 "CSV (*.csv);;All (*)");
     if (path.isEmpty()) return;
-    if (!curvefit::io::saveCsv(d->dataManager->dataset(), path)) {
+    if (!SargisLab::io::saveCsv(d->dataManager->dataset(), path)) {
         QMessageBox::warning(this, "Export", "Failed to save CSV.");
     }
 }

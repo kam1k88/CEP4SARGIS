@@ -3,7 +3,7 @@
 #include <QTextStream>
 #include <QStringList>
 
-namespace curvefit {
+namespace SargisLab {
 namespace io {
 
 std::optional<Dataset> loadCsv(const QString& path, QChar delimiter) {
@@ -52,4 +52,4 @@ bool saveCsv(const Dataset& data, const QString& path, QChar delimiter) {
 }
 
 } // namespace io
-} // namespace curvefit
+} // namespace SargisLab

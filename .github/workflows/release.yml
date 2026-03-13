@@ -75,16 +75,16 @@ jobs:
           $version = $version.TrimStart("v")
 
           # Папка portable
-          New-Item -ItemType Directory -Force -Path CurveFitScientificApp-$version-win64
-          Copy-Item build\Release\CurveFitScientificApp.exe CurveFitScientificApp-$version-win64\
-          Get-ChildItem build\Release\*.dll -ErrorAction SilentlyContinue | Copy-Item -Destination CurveFitScientificApp-$version-win64\
+          New-Item -ItemType Directory -Force -Path SargisLabScientificApp-$version-win64
+          Copy-Item build\Release\SargisLabScientificApp.exe SargisLabScientificApp-$version-win64\
+          Get-ChildItem build\Release\*.dll -ErrorAction SilentlyContinue | Copy-Item -Destination SargisLabScientificApp-$version-win64\
 
           # windeployqt
           $windeployqt = Get-Command windeployqt.exe -ErrorAction SilentlyContinue
-          if ($windeployqt) { & $windeployqt.Source CurveFitScientificApp-$version-win64\CurveFitScientificApp.exe --release }
+          if ($windeployqt) { & $windeployqt.Source SargisLabScientificApp-$version-win64\SargisLabScientificApp.exe --release }
 
           # ZIP
-          Compress-Archive -Path CurveFitScientificApp-$version-win64 -DestinationPath CurveFitScientificApp-$version-win64.zip
+          Compress-Archive -Path SargisLabScientificApp-$version-win64 -DestinationPath SargisLabScientificApp-$version-win64.zip
 
           # -----------------------------
           # NSIS installer
@@ -98,8 +98,8 @@ jobs:
         with:
           name: win64
           path: |
-            CurveFitScientificApp-*-win64.zip
-            CurveFitScientificApp-*-Setup.exe
+            SargisLabScientificApp-*-win64.zip
+            SargisLabScientificApp-*-Setup.exe
 
   publish-release:
     name: Publish Release

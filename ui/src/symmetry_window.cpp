@@ -2,7 +2,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
 #include "qcustomplot.h"
 #else
 #include <QtCharts/QChartView>
@@ -15,7 +15,7 @@
 
 struct SymmetryWindow::Impl {
     QLabel* skewnessLabel = nullptr;
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     QCustomPlot* plot = nullptr;
 #else
     QtCharts::QChartView* chartView = nullptr;
@@ -31,7 +31,7 @@ SymmetryWindow::SymmetryWindow(QWidget* parent) : QDialog(parent), impl_(std::ma
     impl_->skewnessLabel = new QLabel(this);
     layout->addWidget(impl_->skewnessLabel);
 
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     impl_->plot = new QCustomPlot(this);
     layout->addWidget(impl_->plot);
 #else
@@ -43,7 +43,7 @@ SymmetryWindow::SymmetryWindow(QWidget* parent) : QDialog(parent), impl_(std::ma
 
 void SymmetryWindow::setHistogram(const std::vector<std::pair<double, int>>& histogram,
                                   const std::vector<std::pair<double, int>>&) {
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     if (!impl_->plot) return;
     impl_->plot->clearGraphs();
     impl_->plot->addGraph();

@@ -8,7 +8,7 @@
 #include <vector>
 #include <cstdlib>
 
-namespace curvefit {
+namespace SargisLab {
 namespace platform {
 
 QString getExecutableDirectory() {
@@ -56,4 +56,4 @@ QString getAppDataDirectory() {
 }
 
 } // namespace platform
-} // namespace curvefit
+} // namespace SargisLab

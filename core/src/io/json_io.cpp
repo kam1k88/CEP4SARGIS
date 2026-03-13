@@ -4,7 +4,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-namespace curvefit {
+namespace SargisLab {
 namespace io {
 
 std::optional<Dataset> loadJson(const QString& path) {
@@ -56,4 +56,4 @@ bool saveJson(const Dataset& data, const QString& path) {
 }
 
 } // namespace io
-} // namespace curvefit
+} // namespace SargisLab

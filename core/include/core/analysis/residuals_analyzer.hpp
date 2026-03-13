@@ -4,7 +4,7 @@
 #include "core/regression/model_interface.hpp"
 #include <vector>
 
-namespace curvefit {
+namespace SargisLab {
 
 class ResidualsAnalyzer {
 public:
@@ -22,4 +22,4 @@ public:
         const std::vector<double>& residuals);
 };
 
-} // namespace curvefit
+} // namespace SargisLab

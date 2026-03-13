@@ -3,7 +3,7 @@
 #include <numeric>
 #include <algorithm>
 
-namespace curvefit {
+namespace SargisLab {
 
 SymmetryAnalyzer::SymmetryResult SymmetryAnalyzer::analyze(
     const std::vector<double>& residuals, int numBins) {
@@ -58,4 +58,4 @@ SymmetryAnalyzer::SymmetryResult SymmetryAnalyzer::analyze(
     return result;
 }
 
-} // namespace curvefit
+} // namespace SargisLab

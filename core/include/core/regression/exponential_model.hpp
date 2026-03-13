@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-namespace curvefit {
+namespace SargisLab {
 
 /// Exponential model: f(x) = a * exp(b * x) + c
 /// Parameters: a, b, c
@@ -19,4 +19,4 @@ public:
     ceres::CostFunction* createCostFunction(double x, double y) const override;
 };
 
-} // namespace curvefit
+} // namespace SargisLab

@@ -4,7 +4,7 @@
 #include <QString>
 #include <optional>
 
-namespace curvefit {
+namespace SargisLab {
 
 namespace io {
 
@@ -16,4 +16,4 @@ bool saveJson(const Dataset& data, const QString& path);
 
 } // namespace io
 
-} // namespace curvefit
+} // namespace SargisLab

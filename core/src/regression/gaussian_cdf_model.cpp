@@ -2,7 +2,7 @@
 #include <cmath>
 #include <ceres/ceres.h>
 
-namespace curvefit {
+namespace SargisLab {
 
 namespace {
 
@@ -86,4 +86,4 @@ ceres::CostFunction* GaussianCDFModel::createCostFunction(double x, double y) co
     return new GaussianCDFCostFunctor(x, y);
 }
 
-} // namespace curvefit
+} // namespace SargisLab

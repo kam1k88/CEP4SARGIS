@@ -9,8 +9,8 @@ class DataManager : public QWidget {
 public:
     explicit DataManager(QWidget* parent = nullptr);
 
-    curvefit::Dataset dataset() const;
-    void setDataset(const curvefit::Dataset& data);
+    SargisLab::Dataset dataset() const;
+    void setDataset(const SargisLab::Dataset& data);
     void clear();
 
 signals:
@@ -19,5 +19,5 @@ signals:
 private:
     void updateFromTable();
     QTableWidget* table_;
-    mutable curvefit::Dataset dataset_;
+    mutable SargisLab::Dataset dataset_;
 };

@@ -16,12 +16,12 @@ DataManager::DataManager(QWidget* parent) : QWidget(parent) {
     connect(table_, &QTableWidget::cellChanged, this, [this]() { updateFromTable(); emit dataChanged(); });
 }
 
-curvefit::Dataset DataManager::dataset() const {
+SargisLab::Dataset DataManager::dataset() const {
     updateFromTable();
     return dataset_;
 }
 
-void DataManager::setDataset(const curvefit::Dataset& data) {
+void DataManager::setDataset(const SargisLab::Dataset& data) {
     dataset_ = data;
     table_->blockSignals(true);
     table_->setRowCount(static_cast<int>(data.size()));

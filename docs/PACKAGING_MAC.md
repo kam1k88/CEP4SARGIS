@@ -1,15 +1,15 @@
-# Упаковка CurveFit для macOS ARM64
+# Упаковка SargisLab для macOS ARM64
 
 ## Быстрый старт
 
 ```bash
 ./build_mac.sh
-./package_mac.sh install/CurveFitScientificApp.app
+./package_mac.sh install/SargisLabScientificApp.app
 ```
 
 Результат:
-- `install/CurveFitScientificApp.app` — бандл приложения
-- `dist/CurveFitScientificApp.dmg` — образ для распространения
+- `install/SargisLabScientificApp.app` — бандл приложения
+- `dist/SargisLabScientificApp.dmg` — образ для распространения
 
 ## build_mac.sh
 
@@ -42,19 +42,19 @@
 Подписывает .app для распространения вне App Store:
 
 ```bash
-./sign_mac.sh install/CurveFitScientificApp.app
+./sign_mac.sh install/SargisLabScientificApp.app
 ```
 
 Требуется **Developer ID Application** сертификат. Идентификатор задаётся через:
 
 ```bash
 export DEVELOPER_ID_CERT="Developer ID Application: Your Name (TEAM_ID)"
-./sign_mac.sh install/CurveFitScientificApp.app
+./sign_mac.sh install/SargisLabScientificApp.app
 ```
 
 Или вторым аргументом:
 ```bash
-./sign_mac.sh install/CurveFitScientificApp.app "Developer ID Application: Your Name (TEAM_ID)"
+./sign_mac.sh install/SargisLabScientificApp.app "Developer ID Application: Your Name (TEAM_ID)"
 ```
 
 Параметры `codesign`:
@@ -64,7 +64,7 @@ export DEVELOPER_ID_CERT="Developer ID Application: Your Name (TEAM_ID)"
 
 Проверка подписи:
 ```bash
-codesign --verify --deep --strict install/CurveFitScientificApp.app
+codesign --verify --deep --strict install/SargisLabScientificApp.app
 ```
 
 ## Notarization (notarize_mac.sh)
@@ -72,7 +72,7 @@ codesign --verify --deep --strict install/CurveFitScientificApp.app
 Отправляет DMG в Apple на проверку и прикрепляет штамп:
 
 ```bash
-./notarize_mac.sh dist/CurveFitScientificApp.dmg
+./notarize_mac.sh dist/SargisLabScientificApp.dmg
 ```
 
 Переменные окружения:
@@ -85,7 +85,7 @@ codesign --verify --deep --strict install/CurveFitScientificApp.app
 export APPLE_ID="developer@example.com"
 export TEAM_ID="ABCD123456"
 export APP_SPECIFIC_PASSWORD="xxxx-xxxx-xxxx-xxxx"
-./notarize_mac.sh dist/CurveFitScientificApp.dmg
+./notarize_mac.sh dist/SargisLabScientificApp.dmg
 ```
 
 После успешной проверки Apple ticket прикрепляется к DMG (`xcrun stapler staple`).
@@ -100,28 +100,28 @@ export APP_SPECIFIC_PASSWORD="xxxx-xxxx-xxxx-xxxx"
 
 # 2. Подпись .app
 export DEVELOPER_ID_CERT="Developer ID Application: Your Name (TEAM_ID)"
-./sign_mac.sh install/CurveFitScientificApp.app
+./sign_mac.sh install/SargisLabScientificApp.app
 
 # 3. Упаковка DMG (с подписью)
-./package_mac.sh install/CurveFitScientificApp.app --sign
+./package_mac.sh install/SargisLabScientificApp.app --sign
 
 # 4. Notarization
 export APPLE_ID="your@apple.id"
 export TEAM_ID="TEAMID1234"
 export APP_SPECIFIC_PASSWORD="app-specific-password"
-./notarize_mac.sh dist/CurveFitScientificApp.dmg
+./notarize_mac.sh dist/SargisLabScientificApp.dmg
 ```
 
 Или одной командой (если заданы переменные окружения):
 ```bash
-./package_mac.sh install/CurveFitScientificApp.app --sign --notarize
+./package_mac.sh install/SargisLabScientificApp.app --sign --notarize
 ```
 
 ## Unified GitHub Release
 
 **Основной workflow** `.github/workflows/release.yml`:
 - Триггер: push тега `v*` или ручной запуск
-- **build-windows**: сборка Windows x64, артефакт `CurveFitScientificApp-win64.zip`
+- **build-windows**: сборка Windows x64, артефакт `SargisLabScientificApp-win64.zip`
 - **build-macos**: сборка macOS ARM64, подпись, notarization; артефакты `.dmg`, `.app.zip`
 - **publish-release**: создаёт GitHub Release и загружает все три файла
 
@@ -161,7 +161,7 @@ base64 -i Certificate.p12 | pbcopy
 ### Создание App-specific password
 
 1. [appleid.apple.com](https://appleid.apple.com) → Sign-In and Security → App-Specific Passwords
-2. Создать пароль для «CurveFit Notarization»
+2. Создать пароль для «SargisLab Notarization»
 3. Сохранить в секрет `APP_SPECIFIC_PASSWORD`
 
 ## GitHub Actions (без notarization)
@@ -171,8 +171,8 @@ Workflow `.github/workflows/mac_arm64_release.yml` — сборка macOS без
 ## package_mac.sh — артефакты
 
 При вызове с `--sign` или `--notarize` создаётся:
-- `CurveFitScientificApp.dmg`
-- `CurveFitScientificApp.app.zip`
+- `SargisLabScientificApp.dmg`
+- `SargisLabScientificApp.app.zip`
 
 ## Иконка
 

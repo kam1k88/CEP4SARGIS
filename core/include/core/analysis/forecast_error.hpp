@@ -4,7 +4,7 @@
 #include "core/regression/model_interface.hpp"
 #include <vector>
 
-namespace curvefit {
+namespace SargisLab {
 
 class ForecastError {
 public:
@@ -17,4 +17,4 @@ public:
     double probErrorExceeds(double horizon, const std::vector<double>& residuals);
 };
 
-} // namespace curvefit
+} // namespace SargisLab

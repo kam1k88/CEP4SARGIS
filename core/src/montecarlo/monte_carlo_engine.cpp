@@ -5,7 +5,7 @@
 #include <thread>
 #include <future>
 
-namespace curvefit {
+namespace SargisLab {
 
 MonteCarloEngine::MonteCarloEngine() : seed_(0), rng_(seed_) {}
 
@@ -137,4 +137,4 @@ MonteCarloResult MonteCarloEngine::runGeneric(
     return result;
 }
 
-} // namespace curvefit
+} // namespace SargisLab

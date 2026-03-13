@@ -5,7 +5,7 @@
 #include <vector>
 #include <memory>
 
-namespace curvefit {
+namespace SargisLab {
 
 /// Loads regression model plugins from DLL/dylib/so
 class PluginLoader {
@@ -30,4 +30,4 @@ private:
     std::unique_ptr<Impl> impl_;
 };
 
-} // namespace curvefit
+} // namespace SargisLab

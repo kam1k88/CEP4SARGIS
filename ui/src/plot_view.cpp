@@ -1,7 +1,7 @@
 #include "ui/plot_view.hpp"
 #include <QVBoxLayout>
 
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
 #include "qcustomplot.h"
 #else
 #include <QtCharts/QChartView>
@@ -12,7 +12,7 @@
 #endif
 
 struct PlotView::Impl {
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     QCustomPlot* plot = nullptr;
 #else
     QWidget* chartWidget = nullptr;
@@ -27,7 +27,7 @@ struct PlotView::Impl {
 PlotView::PlotView(QWidget* parent) : QWidget(parent), impl_(std::make_unique<Impl>()) {
     auto* layout = new QVBoxLayout(this);
 
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     impl_->plot = new QCustomPlot(this);
     layout->addWidget(impl_->plot);
 #else
@@ -57,8 +57,8 @@ PlotView::PlotView(QWidget* parent) : QWidget(parent), impl_(std::make_unique<Im
 
 PlotView::~PlotView() = default;
 
-void PlotView::setData(const curvefit::Dataset& data) {
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+void PlotView::setData(const SargisLab::Dataset& data) {
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     if (!impl_->plot) return;
     impl_->plot->clearGraphs();
     impl_->plot->addGraph();
@@ -82,7 +82,7 @@ void PlotView::setData(const curvefit::Dataset& data) {
 }
 
 void PlotView::setFitCurve(const std::vector<double>& x, const std::vector<double>& y) {
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     if (!impl_->plot || impl_->plot->graphCount() < 2) {
         if (impl_->plot) impl_->plot->addGraph();
     }
@@ -107,7 +107,7 @@ void PlotView::setFitCurve(const std::vector<double>& x, const std::vector<doubl
 void PlotView::setResiduals(const std::vector<double>& x, const std::vector<double>& residuals) {
     (void)x;
     (void)residuals;
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     // Add residuals as second plot
 #else
     if (impl_->residualSeries) {
@@ -120,7 +120,7 @@ void PlotView::setResiduals(const std::vector<double>& x, const std::vector<doub
 }
 
 void PlotView::clearFit() {
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
     if (impl_->plot && impl_->plot->graphCount() > 1) {
         impl_->plot->graph(1)->data()->clear();
         impl_->plot->replot();
@@ -131,7 +131,7 @@ void PlotView::clearFit() {
 }
 
 void PlotView::clearResiduals() {
-#if defined(CURVEFIT_QCUSTOMPLOT) && CURVEFIT_QCUSTOMPLOT
+#if defined(SargisLab_QCUSTOMPLOT) && SargisLab_QCUSTOMPLOT
 #else
     if (impl_->residualSeries) impl_->residualSeries->clear();
 #endif

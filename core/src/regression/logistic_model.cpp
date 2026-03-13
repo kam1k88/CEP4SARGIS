@@ -2,7 +2,7 @@
 #include <ceres/ceres.h>
 #include <cmath>
 
-namespace curvefit {
+namespace SargisLab {
 
 std::string LogisticModel::name() const {
     return "Logistic (L/(1+exp(-k*(x-x0))))";
@@ -78,4 +78,4 @@ ceres::CostFunction* LogisticModel::createCostFunction(double x, double y) const
     return new LogisticCostFunction(x, y);
 }
 
-} // namespace curvefit
+} // namespace SargisLab

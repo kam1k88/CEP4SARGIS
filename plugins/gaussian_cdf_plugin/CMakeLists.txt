@@ -7,7 +7,7 @@ target_include_directories(gaussian_cdf_plugin PRIVATE
 )
 
 target_link_libraries(gaussian_cdf_plugin PRIVATE
-    curvefit_core
+    SargisLab_core
 )
 
 set_target_properties(gaussian_cdf_plugin PROPERTIES

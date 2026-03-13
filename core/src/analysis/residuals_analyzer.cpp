@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <stdexcept>
 
-namespace curvefit {
+namespace SargisLab {
 
 ResidualsResult ResidualsAnalyzer::analyze(const Dataset& data, IRegressionModel* model,
                                            const std::vector<double>& params) {
@@ -140,4 +140,4 @@ std::vector<std::pair<double, double>> ResidualsAnalyzer::computeQQPlot(
     return qq;
 }
 
-} // namespace curvefit
+} // namespace SargisLab
