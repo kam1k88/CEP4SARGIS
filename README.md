@@ -1,4 +1,4 @@
-# CurveFit
+# SargisLab
 
 Научное приложение для анализа данных и аппроксимации кривых (аналог CurveExpert Professional).
 
