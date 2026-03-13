@@ -11,24 +11,6 @@
 - **Монте-Карло**: распределения параметров, 1000+ симуляций
 - **Плагины**: добавление моделей без пересборки
 
-## Сборка
-
-См. [docs/BUILD.md](docs/BUILD.md).
-
-## Кратко
-
-```bash
-# Windows (vcpkg)
-vcpkg install eigen3 ceres:x64-windows qt6-base:x64-windows qt6-charts:x64-windows
-cmake -B build -DCMAKE_TOOLCHAIN_FILE=[vcpkg]/scripts/buildsystems/vcpkg.cmake
-cmake --build build --config Release
-
-# macOS
-brew install qt@6 eigen ceres-solver
-cmake -B build -DCMAKE_PREFIX_PATH=$(brew --prefix qt@6)
-cmake --build build
-```
-
 ## Структура
 
 - `core/` — модели, регрессия, анализ, IO, плагины
